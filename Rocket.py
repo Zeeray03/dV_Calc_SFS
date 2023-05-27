@@ -1,3 +1,6 @@
 import math
-from Load_BP import load_func
-from inputs import tank_input
+from Load_BP import *
+from inputs import *
+
+if __name__ == '__main__' :
+    i = lol
