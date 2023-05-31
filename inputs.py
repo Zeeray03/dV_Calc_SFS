@@ -8,41 +8,53 @@ def input_check(message, type_val) :
         try :
             if type_val == 1 :
                 user_input = float(input(message))
+                
+                if user_input >= 0 :
+                    return user_input
+                
+                else :
+                    print('Enter a number equal too or greater than zero')
 
-            else :
+            elif type_val == 0 :
                 user_input = int(input(message))
 
-            if user_input > 0 :
+                if user_input > 0 :
+                    return user_input
+                
+                else :
+                    print('Enter a number greater than zero')
+                
+            if type_val < 0 :
+                user_input = input(message)
                 return user_input
             
-            else :
-                print('Please enter a positive number.')
-        
         except :  
             print('please enter a number.')
 
-def tank_input() : # assigns stage index to the tank dimensions
+def part_stage_indexing(name) :
+
+    part_index_list = []
+    part_stage_stuff = []
+    parts_name_list = blueprint_importer('Blueprint.txt', 'n')
+
+    for index, elem in enumerate(parts_name_list) :
+        if elem == name :
+            part_index_list.append(index)
     
-    tank_dimensions = load_func_tanks()
+    total_part = parts_name_list.count(name)
+    count = 0
 
-    for tank in range(len(tank_dimensions)) :
+    for part in parts_name_list :
+        if part == name :
 
-        tank_dimensions[tank].append(
-            input_check(f'Please enter the stage of tank {tank+1} {int(tank_dimensions[tank][0])}x{int(tank_dimensions[tank][2])}: ', 0)
-            )
+            part_stage_stuff.append({'Stage' : input_check(f'What stage is {part} {total_part}? ', 0), 'Part' : name, 'Index' : part_index_list[count]})
+
+            total_part -= 1
+            count += 1
     
-    return tank_dimensions
+    return part_stage_stuff
 
-def part_input() :
-    
-    part_list = load_func_parts()
-    part_library = csv_interpreter('PartLibrary.csv')
+def unified_part_list(staged_index) :
+    l = 1
 
-    for part_type in range(len(part_library)) :
-        part_ID = part_library[part_type]
-        print(part_ID)
-        part_counts = part_list.count(part_ID['ID'])
-        print(part_counts)
-
-part_input()
-
+print(part_stage_indexing('Separator'))
