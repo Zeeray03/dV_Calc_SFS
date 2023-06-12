@@ -50,5 +50,7 @@ if __name__ == '__main__' :
 
     wet_mass = mass_total(stage_arranged_list, 'wet')
     dry_mass = mass_total(stage_arranged_list, 'dry')
-    print(dry_mass)
-    print(wet_mass)
+
+    for i in range(len(dry_mass)) :
+        print(f'The dry mass of Stage {i+1} is {dry_mass[i]:.1f}')
+        print(f'The wet mass of Stage {i+1} is {wet_mass[i]:.1f}')
