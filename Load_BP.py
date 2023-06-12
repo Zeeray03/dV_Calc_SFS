@@ -6,7 +6,6 @@ def blueprint_importer(file_name, key) :
     file = open(file_name)
     data = json.load(file)
     file.close()
-
     part_list = []
 
     for obj in data['parts'] :
@@ -15,7 +14,7 @@ def blueprint_importer(file_name, key) :
             part_list.append(obj[key])  # fetches all the items for a type in the dictionary indexed as 'parts'
         
         except :
-           continue
+           part_list.append('null')
 
     return part_list
 
@@ -36,3 +35,7 @@ def list_of_parts():
     part_names = blueprint_importer('Blueprint.txt','n') # creates a list of all the part ID's in the json file
 
     return part_names
+
+def unified_library() :
+    library = csv_interpreter('PartLibrary.csv') + csv_interpreter('PartLibrary2.csv') + csv_interpreter('PartLibrary3.csv')
+    return library

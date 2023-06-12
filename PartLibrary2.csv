@@ -1,13 +1,13 @@
-Coeffcient,ID
-0.4,Fuel Tank
-33.3333,Fairing
-5,Seperator
-4,Heat Shield
-4,Heat Shield Hollow
-20,Cone
-20,Cone Side
-5,Docking Port
-10,Strut
-35,Fairing Cone
-0.4,Base
-20.6,Side Fuselage
+Coeffcient,ID,Type
+0.4,Fuel Tank,1
+33.3333,Fairing,1
+5,Separator,0
+4,Heat Shield,0
+4,Heat Shield Hollow,0
+20,Cone,0
+20,Cone Side,0
+5,Docking Port,0
+10,Strut,0
+35,Fairing Cone,2
+0.4,Base,2
+20.6,Side Fuselage,0

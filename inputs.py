@@ -47,14 +47,61 @@ def part_stage_indexing(name) :
     for part in parts_name_list :
         if part == name :
 
-            part_stage_stuff.append({'Stage' : input_check(f'What stage is {part} {total_part}? ', 0), 'Part' : name, 'Index' : part_index_list[count]})
+            part_stage_stuff.append({'Stage' : input_check(f'What stage is {part} {total_part}? ', 0), 'Index' : part_index_list[count], 'Name' : part})
 
             total_part -= 1
             count += 1
     
     return part_stage_stuff
 
-def unified_part_list(staged_index) :
-    l = 1
+def unified_part_list(stuff) :
 
-print(part_stage_indexing('Separator'))
+    parts_data_list = blueprint_importer('Blueprint.txt', 'N')
+    unified_list = []
+
+    for part in range(len(stuff)) :
+
+        try :
+            item = stuff[part]
+            item.update({'Dimensions' : parts_data_list[item['Index']]})
+            unified_list.append(item)
+        except :
+            'null'
+    return unified_list
+
+def mass_getter(unified, library) :
+
+    list_mass = []
+
+    for index in unified :
+        for part in library :
+            if part['ID'] == index['Name'] :
+
+                if int(part['Type']) == 2 :
+                   mass = part['Mass']
+
+                elif int(part['Type']) == 1 :
+                    dimensions = index['Dimensions']
+                    mass = area_formula(dimensions['width_a'], dimensions['width_b'], dimensions['height'], part['Coeffcient'])
+
+                elif int(part['Type']) == 0 :
+                    dimensions = index['Dimensions']
+                    mass = width_formula(dimensions['width'], part['Coeffcient'])
+            else :
+                continue
+        item = unified[unified.index(index)]
+        item['Mass'] = mass
+        item.pop('Dimensions')
+    
+    return unified       
+
+def final_list() :
+
+    part_names = [*set(list_of_parts())]
+    libraries = unified_library()
+    list_final = []
+
+    for part in part_names :
+        list_final = mass_getter(unified_part_list(part_stage_indexing(part)), libraries) + list_final
+
+    return list_final
