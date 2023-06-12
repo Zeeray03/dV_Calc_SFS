@@ -86,9 +86,19 @@ def mass_getter(unified, library) :
 
                 elif int(part['Type']) == 0 :
                     dimensions = index['Dimensions']
-                    mass = width_formula(dimensions['width'], part['Coeffcient'])
+                    try :
+                        mass = width_formula(dimensions['width'], part['Coeffcient'])
+                    except :
+                        mass = width_formula(dimensions['size'], part['Coeffcient'])
+
+                elif int(part['Type']) == 3 :
+
+                    dimensions = index['Dimensions']
+                    mass = aread_formula2(dimensions['width'], dimensions['height'], part['Coeffcient'])
+
             else :
                 continue
+
         item = unified[unified.index(index)]
         item['Mass'] = mass
         item.pop('Dimensions')

@@ -10,3 +10,9 @@ def width_formula(width, coefficient) :
     mass = float(width) / float(coefficient)
 
     return mass
+
+def aread_formula2(width, height, coefficient) :
+    
+    mass = (float(width) * float(height)) / float(coefficient)
+
+    return mass
