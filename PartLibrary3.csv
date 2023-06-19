@@ -1,8 +1,8 @@
-Engines,Thrust,Specifc Impulse,Mass,ID,Type
-Titan,400,240,12,Engine Titan,2
-Hawk,120,240,3.5,Engine Hawk,2
-Frontier,100,290,6,Engine Frontier,2
-Valiant,40,280,2,Engine Valiant,2
-Kolibri,15,260,0.5,Engine Kolibri,2
-RCS,1.5,120,0.05,RCS,2
-Ion,1.5,1200,0.5,Placeholder ION,2
+Engines,Thrust,Specific_Impulse,Mass,ID,Type,Consumption
+Titan,400,240,12,Engine Titan,2,1.665
+Hawk,120,240,3.5,Engine Hawk,2,0.4995
+Frontier,100,290,6,Engine Frontier,2,0.3445
+Valiant,40,280,2,Engine Valiant,2,0.1427
+Kolibri,15,260,0.5,Engine Kolibri,2,0.0576
+RCS,1.5,120,0.05,RCS,2,0.0125
+Ion,1.5,1200,0.5,Placeholder ION,2,0.0012

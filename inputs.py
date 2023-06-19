@@ -36,18 +36,25 @@ def part_stage_indexing(name) :
     part_index_list = []
     part_stage_stuff = []
     parts_name_list = blueprint_importer('Blueprint.txt', 'n')
-
+    part_dimensions = blueprint_importer('Blueprint.txt', 'N')
+    
     for index, elem in enumerate(parts_name_list) :
         if elem == name :
             part_index_list.append(index)
     
     total_part = parts_name_list.count(name)
     count = 0
-
+    
     for part in parts_name_list :
         if part == name :
+            if name == 'Fuel Tank' :
+                part_dimen = part_dimensions[int(part_index_list[count])]
+                width = 'width_original'
+                height = 'height'
+                part_stage_stuff.append({'Stage' : input_check(f'What stage is Fuel Tank {int(part_dimen[width]*2)}x{int(part_dimen[height]*2)} {total_part}? ', 0), 'Index' : part_index_list[count], 'Name' : part})
 
-            part_stage_stuff.append({'Stage' : input_check(f'What stage is {part} {total_part}? ', 0), 'Index' : part_index_list[count], 'Name' : part})
+            else :
+                part_stage_stuff.append({'Stage' : input_check(f'What stage is {part} {total_part}? ', 0), 'Index' : part_index_list[count], 'Name' : part})
 
             total_part -= 1
             count += 1
